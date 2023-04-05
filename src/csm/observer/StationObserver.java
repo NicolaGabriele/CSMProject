@@ -11,4 +11,6 @@ public interface StationObserver {
     double getServiceTime();
     int getServices();
 
+    void setServiceTime(double time);
+
 }//StationObserver

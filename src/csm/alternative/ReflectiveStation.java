@@ -8,6 +8,7 @@ import smart.theatre.distributions.Distribution;
 public class ReflectiveStation extends Station{
 
     private double startService = 0;
+    private boolean doneService = false;
 
     @Msgsrv
     public void init(Distribution d, Integer numServers, Station[] stations, StationObserver observer){
@@ -22,10 +23,12 @@ public class ReflectiveStation extends Station{
         c.setGlobalEnd(now());
         observer().notifyBusyTime(c.getGlobalEnd()-c.getGlobalStart());
         decrementInService();
-        if(inService() == 0 || Constants.endTime-now()<10) {
+        if(inService() == 0) {
             observer().notifyServiceTime(now() - startService);
-            System.out.println("make test");
+            doneService = true;
         }
+        if(Constants.endTime-now()<10 && !doneService)
+            observer().setServiceTime(now() - startService);
         send(probabilityDistribution().nextSample(), "departure",c);
     }
 

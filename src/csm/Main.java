@@ -55,7 +55,6 @@ public class Main {
         }
         sim.controller();
 
-
         System.out.println(String.format("Resume stazione 1:\n Sojourn time: %f\n Throughput: %f\n Utilizzation: %f\n\n",
                 centerObs.getSoujornTime(),centerObs.getThroughput(),centerObs.getUtilizzation()));
 

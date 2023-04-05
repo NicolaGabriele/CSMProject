@@ -52,6 +52,10 @@ public class SimpleObserver implements StationObserver{
         return serviceTime/endTime;
     }
 
+    public void setServiceTime(double time){
+        this.serviceTime = time;
+    }
+
     public int getNumberOfService() {
         return numberOfService;
     }
